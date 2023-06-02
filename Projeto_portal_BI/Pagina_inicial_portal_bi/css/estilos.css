@@ -1,0 +1,105 @@
+/*CONFIGURAÇÕES DO CABEÇALHO DO SITE*/
+body{
+	margin: 50px; /*auto;*/
+	width: 1350px; /*960*/
+	padding: 50px;
+	background-image: url("../imagens/Imagem_inicial.jpg");
+}
+
+#botao_pagina_inicial{
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-align: center;
+	font-size: 25px;
+	list-style-type: none;
+	/*float: left;*/
+	padding-right: 20px;
+	padding-top: 10px;
+	background-color: rgb(53, 99, 99);
+	border-radius: 25px;
+	border-style: double;
+	border-color: white;
+	margin-right: 50px;
+	line-height: 60px;
+	display: inline-block;
+	
+}
+#botao_dashboards{
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-align:center;
+	font-size: 25px;
+	list-style-type: none;
+	/*float: left;*/
+	padding-right: 25px;
+	padding-top: 10px;
+	background-color: rgb(53, 99, 99);
+	border-radius: 25px;
+	border-style: double;
+	border-color: white;
+	margin-right: 50px;
+	line-height: 60px;
+	display: inline-block;
+}
+
+#botao_calculadora{
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-align: center;
+	font-size: 25px;
+	list-style-type: none;
+	/*float: left;*/
+	padding-right: 25px;
+	padding-top: 10px;
+	background-color: rgb(53, 99, 99);
+	border-radius: 25px;
+	border-style: double;
+	border-color: white;
+	margin-right: 50px;
+	line-height: 60px;
+	display: inline-block;
+	
+}
+/*FIM DAS CONFIGURAÇÕES DO CABEÇALHO*/
+
+/*PAGINA INICIAL*/
+#bemvindo {
+	color:rgb(255, 255, 255);
+	padding-top: 40px;
+	line-height: 60px;
+	font-size: 70px;
+	background-color: rgb(53, 99, 99);
+	text-align: center;
+}
+
+/*configuração do popup*/
+
+.popup {
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popup iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 80%;
+  }
+  
+  .popup .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+  }

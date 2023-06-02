@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head> 
+	<meta charset="UTF-8">
+	<title>BI - Vendas</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<link rel="shortcut icon" href="favicon.png" type="image/png"></a>
+	<link href="css/estilos.css" rel="stylesheet"></a>
+</head>
+
+
+
+<body>
+
+	<header>
+		<ul><a href="index.html">
+				<li id="botao_pagina_inicial">Pagina Inicial</li>
+			</a>
+			<a href="dashboards.html">
+				<li id="botao_dashboards">Dashboards Comercial</li>
+			</a>
+			<a href="calculadora.html">
+				<li id="botao_calculadora">Dashboards Vendas</li>
+			</a>
+		</ul>
+	</header>
+
+	<button onclick="openPopup2()">Visualização Avançada</button>
+
+	<div id="popup" class="popup">
+		<span onclick="closePopup()" class="close">&times;</span>
+	</div>
+	
+	<iframe name="iframe_dashboards" src="vendas.html" height="822" width="1300">...</iframe>
+	
+	<script src="./scripts/scripts.js"></script>
+</body>
+	
+</html>

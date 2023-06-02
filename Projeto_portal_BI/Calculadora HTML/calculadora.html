@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="stylecalc.css">
+    <!-- Inclua o CSS do Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Inclua o jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Inclua o JavaScript do Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="image-container">
+        <img id="logo" src="Calculadora de Margem MDA_arquivos\logo_mda.png" alt="Logo MDA">
+        <img id="barra_lateral_esquerda" src="Calculadora de Margem MDA_arquivos\barra_lateral_esquerda.png">
+        <button class="image-button">
+            <img id="but_limpar_tabela" src="Calculadora de Margem MDA_arquivos\but_limpar_tabela.png" alt="Botão">
+        </button>
+        <button class="image-button">
+            <img id="but_enviar_negociacao" src="Calculadora de Margem MDA_arquivos\but_enviar_negociacao.png"
+                alt="Botão">
+        </button>
+        <button class="image-button">
+            <img id="but_atualizar_listas" src="Calculadora de Margem MDA_arquivos\but_atualizar_listas.png"
+                alt="Botão">
+        </button>
+        <button class="image-button">
+            <img id="but_salvar_pdf" src="Calculadora de Margem MDA_arquivos\but_salvar_pdf.png" alt="Botão">
+        </button>
+    </div>
+    <div id="cont1" class="container">
+        <img id="status_imagem" src="Calculadora de Margem MDA_arquivos\status_imagem.png">
+        <div id="mensagem_do_status" class="text-box">
+            <p>Pedido com margem moderada, revise e inclua no sistema.</p>
+        </div>
+        <div class="borda"></div>
+    </div>
+    <div class="container">
+        <img id="detalhes_da_negociacao" src="Calculadora de Margem MDA_arquivos\detalhes_da_negociacao.png">
+        <input id="numero_do_pedido_select" placeholder="1234/2023"></input>
+        <div id="numero_do_pedido_text" class="text-box">
+            <p>Numero do pedido:</p>
+        </div>
+        <select id="nome_do_cliente_select">
+            <option value="">Selecione</option>
+        </select>
+        <div id="nome_do_cliente_text" class="text-box">
+            <p>Nome do cliente:</p>
+        </div>
+        <select id="nome_do_vendedor_select">
+            <option value="">Selecione</option>
+        </select>
+        <div id="nome_do_vendedor_text" class="text-box">
+            <p>Nome do vendedor:</p>
+        </div>
+        <select id="nome_da_empresa_select">
+            <option value="">Selecione</option>
+        </select>
+        <div id="nome_da_empresa_text" class="text-box">
+            <p>Nome da empresa:</p>
+        </div>
+        <div id="dia_da_proposta_text" class="text-box">
+            <p>Dia da proposta:</p>
+        </div>
+        <div id="data_atual" class="text-box">
+            <p></p>
+        </div>
+        <div id="vigencia_da_tabela_text" class="text-box">
+            <p>Vigência da tabela:</p>
+        </div>
+        <div id="vigencia_da_tabela_data" class="text-box">
+            <p>21/12/2022</p>
+        </div>
+    </div>
+    <div class="container">
+        <img id="pesquisar_produto_img" src="Calculadora de Margem MDA_arquivos\pesquisar_produto_img.png">
+        <select id="selectDados">
+            <option value="">Selecione</option>
+        </select>
+        <input type="text" id="codigoTextBox" readonly>
+
+        <div class="borda"></div>
+
+        <table id="minha_tabela">
+            <thead>
+                <tr>
+                    <th id="cod_produto">Código do produto - pesquisar</th>
+                    <th id="produto">Produto</th>
+                    <th id="qtd">QTD</th>
+                    <th id="valor_orcado_unitario">Valor Orçado Unitário</th>
+                    <th id="valor_orcado_total">Valor Total Orçado</th>
+                    <th id="preco_zero">Preço Zero</th>
+                    <th id="preco_total">Variação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas da tabela -->
+                <!-- Repita essa linha 40 vezes -->
+                <tr> <!-- linha 1 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement" onchange="buscarValor(this)" class="select2" style="width:100px;"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade1"></td>
+                    <td><input type="number" id="valor_orcado1"></td>
+                    <td id="resultado1"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement2" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade2"></td>
+                    <td><input type="number" id="valor_orcado2"></td>
+                    <td id="resultado2"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement3" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade3"></td>
+                    <td><input type="number" id="valor_orcado3"></td>
+                    <td id="resultado3"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement4" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade4"></td>
+                    <td><input type="number" id="valor_orcado4"></td>
+                    <td id="resultado4"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement5" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade5"></td>
+                    <td><input type="number" id="valor_orcado5"></td>
+                    <td id="resultado5"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement6" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade6"></td>
+                    <td><input type="number" id="valor_orcado6"></td>
+                    <td id="resultado2"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement7" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade7"></td>
+                    <td><input type="number" id="valor_orcado7"></td>
+                    <td id="resultado7"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement8" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade8"></td>
+                    <td><input type="number" id="valor_orcado8"></td>
+                    <td id="resultado8"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement9" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade9"></td>
+                    <td><input type="number" id="valor_orcado9"></td>
+                    <td id="resultado9"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement10" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade10"></td>
+                    <td><input type="number" id="valor_orcado10"></td>
+                    <td id="resultado10"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement11" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade11"></td>
+                    <td><input type="number" id="valor_orcado11"></td>
+                    <td id="resultado11"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement12" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade12"></td>
+                    <td><input type="number" id="valor_orcado12"></td>
+                    <td id="resultado12"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement13" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade13"></td>
+                    <td><input type="number" id="valor_orcado13"></td>
+                    <td id="resultado13"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement14" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade14"></td>
+                    <td><input type="number" id="valor_orcado14"></td>
+                    <td id="resultado14"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr> <!-- linha 2 -->
+                    <td> <!--produtos por código -->
+                        <select id="selectElement15" onchange="buscarValor(this)" class="select2"> 
+                            <option value="">Selecione</option>
+                        </select>
+
+                    </td>
+                    <td></td>
+                    <td><input type="number" id="quantidade15"></td>
+                    <td><input type="number" id="valor_orcado15"></td>
+                    <td id="resultado15"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <!-- Repita essa linha 40 vezes -->
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div class="container">
+        <img id="criterios" src="Calculadora de Margem MDA_arquivos\criterios_img.png">
+        <select id="comissao_select">
+            <option value="um">1%</option>
+            <option value="dois">2%</option>
+            <option value="tres">3%</option>
+        </select>
+        <div id="comissao" class="text-box">
+            <p>Comissão:</p>
+        </div>
+        <select id="forma_pagamento_select">
+            <option value="a_vita">A vista</option>
+            <option value="quinze">15</option>
+            <option value="trinta">30</option>
+            <option value="vinte_um_t">21/35/41</option>
+            <option value="vinte_oito">28/35/42</option>
+            <option value="quarenta_cinco">45</option>
+            <option value="trinta_sesse">30/60</option>
+            <option value="trinta_sesse_nov">30/60/90</option>
+            <option value="trinta_sesse_nov_centv">30/60/90/120</option>
+            <option value="trinta_sesse_nov_centv_centc">30/60/90/120/150</option>
+            <option value="trinta_sesse_nov_centv_centc_centoit">30/60/90/120/150</option>
+        </select>
+        <div id="forma_pagamento_text" class="text-box">
+            <p>Forma de Pagamento:</p>
+        </div>
+        <div id="tipo_do_frete_text" class="text-box">
+            <p>Tipo de Frete:</p>
+        </div>
+        <select id="tipo_do_frete_select">
+            <option value="a_vita">CIF</option>
+            <option value="quinze">FOB</option>
+        </select>
+        <div id="valor_do_frete_text" class="text-box">
+            <p>Valor do Frete:</p>
+        </div>
+        <input id="valor_do_frete_input" placeholder="R$ 00,00" type="number" step="0.01" name="quantity" min="0.01">
+        <div id="valor_da_venda_text" class="text-box">
+            <p>Valor da Venda:</p>
+        </div>
+        <input id="valor_da_venda_calculado" placeholder="R$ 00,00">
+
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
